@@ -26,12 +26,13 @@
         </div>
     @endif
 
-    <a href="{{ route('product.create') }}" class="btn btn-primary my-3"><i class="las la-plus"></i> Tambah Produk</a>
+    <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm my-3"><i class="las la-plus-circle"></i> Tambah Produk</a>
     <div class="table-responsive">
         <table id="productTable" class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Gambar</th>
+                    <th scope="col">No</th>
+                    <th scope="col">Photo</th>
                     <th scope="col">Nama Produk</th>
                     <th scope="col">Kategori</th>
                     <th scope="col">Harga</th>
@@ -40,11 +41,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($products as $product)
+                @foreach($products as $key => $product)
                     <tr>
+                        <td class="text-end">{{ $key+1 }} </td>
                         <td>
                             @if($product->images->count() > 0)
-                                <img src="{{ asset($product->images->first()->path) }}" alt="{{ $product->images->first()->nama_file }}" width="100">
+                                <img src="{{ asset($product->images->first()->path) }}" alt="{{ $product->images->first()->nama_file }}" width="50">
                             @endif
                         </td>
                         <td>{{ $product->product_name }}</td>
@@ -52,8 +54,8 @@
                         <td>Rp{{ number_format($product->product_price, 0, ',', '.') }}</td>
                         <td>{{ $product->product_stock }}</td>
                         <td>
-                            <a href="{{ route('product.edit', $product->id) }}"><i class="las la-pen text-warning border border-warning p-1 rounded-circle"></i></a>
-                            <a href="{{ route('product.destroy', $product->id) }}" onclick="return confirm('Apakah kamu yakin ingin menghapus produk ini?')"><i class="las la-trash text-secondary border border-secondary p-1 rounded-circle"></i></a>
+                            <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm"><i class="las la-pen"></i> Ubah</a>
+                            <a href="{{ route('product.destroy', $product->id) }}" class="btn btn-secondary btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus produk ini?')"><i class="las la-trash"></i> Hapus</a>
                         </td>
                     </tr>
                 @endforeach
@@ -92,4 +94,9 @@
             $('#success-alert').fadeOut('fast');
         }, 3000) //hilangkan session dalam 3 detik
     </script>
+<style>
+    td {
+        vertical-align: middle; /* Mengatur elemen di tengah secara vertikal */
+    }
+</style>
 @endsection

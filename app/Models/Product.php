@@ -41,8 +41,8 @@ class Product extends Model
         return $this->hasMany(Variant::class);
     }
 
-    public function discounts(): BelongsTo
+    public function discounts(): HasOne
     {
-        return $this->belongsTo(Discount::class, 'product_id');
+        return $this->hasOne(Discount::class, 'product_id', 'id');
     }
 }

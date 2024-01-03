@@ -90,6 +90,11 @@ Route::prefix('admin')->group(function(){
 
     Route::controller(DiscountController::class)->group(function () {
         Route::get('/discount', 'index')->name('discount.index');
+        Route::get('/discount/check/{productId}', 'check')->name('discount.check');
+        Route::get('/discount/add', 'create')->name('discount.create');
+        Route::post('/discount/store', 'store')->name('discount.store');
+        Route::get('/discount/edit/{product_id}', 'edit')->name('discount.edit');
+        Route::put('/discount/update/{product_id}', 'update')->name('discount.update');
     });
 
     // Route::get('/diskon'. [DiscountController::class, 'index'])->name('discount.list');

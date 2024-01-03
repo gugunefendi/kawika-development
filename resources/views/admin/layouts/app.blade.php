@@ -266,7 +266,12 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav d-flex flex-row">
             <div class="nav-item text-nowrap">
+              
+              @if(Auth::check())
                 <a class="nav-link px-3" href="#">Hello, {{ Auth::user()->name }}</a>
+              @else
+                <script>window.location = "{{ route('login') }}";</script>
+              @endif
             </div>
             <div class="nav-item text-nowrap notification-drop">
               <a class="nav-link px-3 item" href="#">
