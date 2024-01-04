@@ -33,6 +33,7 @@ class DiscountController extends Controller
     public function store(Request $request) {
         // print_r("woii");
         // test perubahan di git
+        // test aja
         $validator = Validator::make($request->all(), [
             'discount' => 'required|integer',
             'start_discount' => 'required|date',
