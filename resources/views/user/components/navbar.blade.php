@@ -6,7 +6,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo-kawika123.webp') }}" alt="" width="80" height="80">
+                    <img src="{{ asset('images/logo-kawika123.webp') }}" alt="" width="60" height="60">
                 </a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
